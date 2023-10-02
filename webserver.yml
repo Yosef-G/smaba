@@ -1,16 +1,17 @@
+
 ---
-- name: Install and configure Nginx
+- name: Install and Configure Samba on CentOS 7
   hosts: myhosts
+  become: yes
   tasks:
-    - name: Install Nginx
-      apt:
+    - name: Install Samba
+      yum:
         name: samba
         state: present
-      become: yes
 
-    - name: Start Nginx service
-      service:
-        name: samba
+    - name: Start and Enable Samba
+      systemd:
+        name: smb
+        enabled: yes
         state: started
-      become: yes
 
