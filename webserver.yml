@@ -1,0 +1,16 @@
+---
+- name: Install and configure Nginx
+  hosts: myhosts
+  tasks:
+    - name: Install Nginx
+      apt:
+        name: samba
+        state: present
+      become: yes
+
+    - name: Start Nginx service
+      service:
+        name: samba
+        state: started
+      become: yes
+
